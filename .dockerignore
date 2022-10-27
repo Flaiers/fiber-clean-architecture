@@ -1,0 +1,24 @@
+# Git
+.git/
+.github/
+.gitignore
+.gitattributes
+
+# EditorConfig
+.editorconfig
+
+# Docker
+docker-compose.yml
+Dockerfile
+docker/
+.dockerignore
+
+# GoLand
+.idea/
+
+# VSCode
+.vscode/
+
+# Docs
+README.md
+LICENSE
