@@ -26,14 +26,19 @@ help: ## Display this help screen
 install: ## Installations
 	go mod download
 	go mod verify
+	go mod tidy
 
 .PHONY: lint
 lint: ## Run linters
 	golangci-lint run
 
+.PHONY: swag
+swag: ## Generate swagger docs
+	swag init -g internal/app/app.go
+
 .PHONY: run
 run: ## Run application
-	go run .
+	go run cmd/app/main.go
 
 .PHONY: compose-convert
 compose-convert: ## Converts the compose file to platform's canonical format
