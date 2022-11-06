@@ -1,0 +1,9 @@
+image: golang:1.19-alpine
+
+pipelines:
+  default:
+    - step:
+        name: Lint code
+        image: golangci/golangci-lint:v1.50-alpine
+        script:
+          - golangci-lint run -v

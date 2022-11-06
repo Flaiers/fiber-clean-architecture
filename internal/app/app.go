@@ -1,30 +1,19 @@
 package app
 
 import (
-	"encoding/json"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
-	"github.com/gofiber/swagger"
 
-	_ "github.com/flaiers/fiber-clean-architecture/docs"
+	"github.com/flaiers/fiber-clean-architecture/internal/config"
+	"github.com/flaiers/fiber-clean-architecture/internal/controller/http"
 )
 
-func Create() *fiber.App {
-	app := fiber.New(fiber.Config{
-		CaseSensitive: true,
-		StrictRouting: true,
-		JSONEncoder:   json.Marshal,
-		JSONDecoder:   json.Unmarshal,
-	})
-	app.Use(cors.New(cors.Config{
-		AllowOrigins:     "*",
-		AllowMethods:     "*",
-		AllowHeaders:     "*",
-		AllowCredentials: true,
-	}))
-	app.Use(logger.New())
-	app.Get("/docs/*", swagger.HandlerDefault)
+func New(cfg config.Config) *fiber.App {
+	app := fiber.New(config.NewFiberConfig())
+	app.Use(cors.New(config.NewCorsConfig(cfg)))
+	app.Use(logger.New(config.NewLoggerConfig()))
+	app.Route(config.API, http.Router(cfg))
+
 	return app
 }

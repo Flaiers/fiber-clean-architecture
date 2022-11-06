@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 
-	"github.com/flaiers/fiber-clean-architecture/internal/app"
 	"github.com/flaiers/fiber-clean-architecture/internal/config"
 )
 
@@ -13,5 +12,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Fatal(app.New(cfg).Listen(cfg.Addr))
+	log.Fatal(config.MigrateDatabase(cfg.Database.Dsn))
 }
