@@ -1,4 +1,4 @@
-module bitbucket.org/flaiers/avito-tech
+module github.com/flaiers/fiber-clean-architecture
 
 go 1.19
 
