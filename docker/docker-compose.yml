@@ -1,11 +1,27 @@
 version: '3.9'
 services:
 
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    container_name: fiber_clean_backend
+    depends_on:
+      - db
+      - migration
+    env_file:
+      - ${ENV_FILE}
+    image: fiber_clean_backend
+    networks:
+      - network
+    ports:
+      - ${HOST_BACKEND_PORT}:${BACKEND_PORT}
+
   db:
     container_name: fiber_clean_db
     environment:
       POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_PASSWORD: ${DB_PASS}
       POSTGRES_DB: ${DB_NAME}
     image: postgres:15-alpine
     networks:
@@ -15,6 +31,18 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  migration:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.migration
+    container_name: fiber_clean_migration
+    depends_on:
+      - db
+    env_file:
+      - ${ENV_FILE}
+    image: fiber_clean_migration
+    networks:
+      - network
 
 networks:
   network:
