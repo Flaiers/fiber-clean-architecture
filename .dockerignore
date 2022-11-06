@@ -1,17 +1,9 @@
-# Git
-.git/
-.github/
-.gitignore
-.gitattributes
+# Compile directory
+bin/
 
-# EditorConfig
-.editorconfig
-
-# Docker
-docker-compose.yml
-Dockerfile
-docker/
-.dockerignore
+# Docs
+*.md
+LICENSE
 
 # GoLand
 .idea/
@@ -19,6 +11,23 @@ docker/
 # VSCode
 .vscode/
 
-# Docs
-README.md
-LICENSE
+# Makefile
+Makefile
+
+# EditorConfig
+.editorconfig
+
+# GolangCI
+.golangci.yml
+
+# Git
+.git/
+.github/
+.gitignore
+.gitattributes
+
+# Docker
+docker/
+Dockerfile
+.dockerignore
+docker-compose.*

@@ -19,3 +19,6 @@
 
 # VSCode
 .vscode/
+
+# Compile directory
+bin/

@@ -1,0 +1,22 @@
+basePath: /api/v1
+info:
+  contact:
+    email: i@flaiers.me
+    name: Maxim Bigin
+    url: https://flaiers.me
+  description: Fiber Clean REST API
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://swagger.io/terms
+  title: Fiber Clean API
+  version: "1.0"
+paths: {}
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+  BasicAuth:
+    type: basic
+swagger: "2.0"
